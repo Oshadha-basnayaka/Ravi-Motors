@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="pane" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.raviMotors.controller.LoginFormController">
+   <children>
+      <ImageView fitHeight="1080.0" fitWidth="1920.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/newloging.jpg" />
+         </image>
+      </ImageView>
+      <JFXTextField fx:id="TxtUserName" layoutX="1161.0" layoutY="558.0" onAction="#OnActionBtnUsername" prefHeight="31.0" prefWidth="411.0">
+         <font>
+            <Font size="24.0" />
+         </font></JFXTextField>
+      <JFXPasswordField fx:id="TxtPassword" layoutX="1163.0" layoutY="668.0" onAction="#OnActionBtnPassword" prefHeight="31.0" prefWidth="411.0">
+         <font>
+            <Font size="24.0" />
+         </font></JFXPasswordField>
+      <JFXButton layoutX="1188.0" layoutY="798.0" onAction="#OnActionBtnLogin" opacity="0.2" prefHeight="63.0" prefWidth="220.0" text="." />
+   </children>
+</AnchorPane>

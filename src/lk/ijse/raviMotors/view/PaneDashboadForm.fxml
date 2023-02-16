@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="pane" prefHeight="1080.0" prefWidth="1620.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.raviMotors.controller.PaneDashboadFormController">
+   <children>
+      <ImageView fitHeight="1080.0" fitWidth="1620.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-color: EAC8AB;">
+         <image>
+            <Image url="@../assets/customer6666newpane.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="236.0" layoutY="24.0" prefHeight="42.0" prefWidth="330.0" text="Dashboad Form" textFill="#5e5c5c">
+         <font>
+            <Font name="System Bold" size="26.0" />
+         </font>
+      </Label>
+      <Pane layoutX="344.0" layoutY="481.0" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: EAC8AB; -fx-background-radius: 20;">
+         <children>
+            <Label layoutX="36.0" layoutY="106.0" text="Customer">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="txtCustomerCpont" layoutX="57.0" layoutY="42.0" text="Label">
+               <font>
+                  <Font size="36.0" />
+               </font></Label>
+         </children>
+      </Pane>
+      <Pane layoutX="578.0" layoutY="477.0" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: EAC8AB; -fx-background-radius: 20;">
+         <children>
+            <Label fx:id="txtEmpoiesCount" layoutX="59.0" layoutY="45.0" text="Label">
+               <font>
+                  <Font size="36.0" />
+               </font></Label>
+            <Label layoutX="34.0" layoutY="112.0" text="Emploies">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane layoutX="813.0" layoutY="476.0" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: EAC8AB; -fx-background-radius: 20;">
+         <children>
+            <Label fx:id="txtSupplierCount" layoutX="54.0" layoutY="45.0" text="Label">
+               <font>
+                  <Font size="36.0" />
+               </font></Label>
+            <Label layoutX="37.0" layoutY="111.0" text="Suppliers">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane layoutX="1051.0" layoutY="479.0" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: EAC8AB; -fx-background-radius: 20;">
+         <children>
+            <Label fx:id="txtPartCount" layoutX="54.0" layoutY="43.0" text="Label">
+               <font>
+                  <Font size="36.0" />
+               </font></Label>
+            <Label layoutX="48.0" layoutY="112.0" text="Parts">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <ImageView fitHeight="336.0" fitWidth="343.0" layoutX="1020.0" layoutY="695.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/flow%20chart.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="335.0" fitWidth="338.0" layoutX="66.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/piechart.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

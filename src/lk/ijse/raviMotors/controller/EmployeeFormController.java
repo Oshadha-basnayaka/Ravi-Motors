@@ -1,0 +1,257 @@
+package lk.ijse.raviMotors.controller;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.scene.control.Alert;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.util.Duration;
+import lk.ijse.raviMotors.bo.BOFactory;
+import lk.ijse.raviMotors.bo.custom.CustomerBO;
+import lk.ijse.raviMotors.bo.custom.EmployeeBO;
+import lk.ijse.raviMotors.db.DBConnection;
+import lk.ijse.raviMotors.dto.CustomerDTO;
+import lk.ijse.raviMotors.dto.EmployeeDTO;
+import lk.ijse.raviMotors.model.CustomerModel;
+import lk.ijse.raviMotors.model.EmployeeModel;
+import lk.ijse.raviMotors.model.SupplierModel;
+import lk.ijse.raviMotors.to.Customer;
+import lk.ijse.raviMotors.to.Employee;
+import lk.ijse.raviMotors.to.Supplier;
+import lk.ijse.raviMotors.util.Navigation;
+import lk.ijse.raviMotors.util.Routes;
+import org.controlsfx.control.Notifications;
+
+import java.io.IOException;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class EmployeeFormController {
+    public TextField txtName;
+    public TextField txtAddress;
+    public TextField txtDob;
+    public TableView tblEmpoyee;
+    public TableColumn colID;
+    public TableColumn colName;
+    public TableColumn colAddress;
+    public TableColumn colDob;
+    public TableColumn colNic;
+    public TextField txtNic;
+    public AnchorPane pane;
+    public TextField txtId;
+    public TextField txtContact;
+    public TableColumn colContact;
+
+
+    EmployeeBO employeeBO = (EmployeeBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.EMPLOYEE);
+
+
+
+    public void initialize(){
+
+        colID.setCellValueFactory(new PropertyValueFactory<>("id"));
+        colName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        colAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
+        colContact.setCellValueFactory(new PropertyValueFactory<>("contact"));
+
+        LoadAllEmployee();
+
+    }
+
+    public void OnActionBtnSave(ActionEvent actionEvent) {
+
+        String id = txtId.getText();
+        String name = txtName.getText();
+        String address = txtAddress.getText();
+        int contact =Integer.parseInt(txtContact.getText());
+
+        Employee employee = new Employee(id, name, address, contact);
+        try {
+            boolean isAdded = employeeBO.addEmployee(new EmployeeDTO(id,name,address,contact));
+
+            if(isAdded) {
+
+                //Image image = new Image("lk/ijse/blueocean/assets/icons8-done-64.png");
+                Notifications.create()
+                        .title("Ravi motors")
+                        //.graphic(new ImageView(image))
+                        .text("Employee Add !")
+                        .darkStyle()
+                        .hideAfter(Duration.seconds(5))
+                        .show();
+
+                LoadAllEmployee();
+
+            } else {
+                new Alert(Alert.AlertType.WARNING, "Something happened!").show();
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    public void OnActionBtnclear(ActionEvent actionEvent) {
+    }
+
+    public void OnActionBtndelete(ActionEvent actionEvent) {
+
+        String id = txtId.getText();
+        try {
+            boolean isDelete = employeeBO.deleteEmployee(id);
+
+            if(isDelete) {
+
+                Notifications.create()
+                        .title("Ravi motors")
+                        //.graphic(new ImageView(image))
+                        .text("Employee Delete !")
+                        .darkStyle()
+                        .hideAfter(Duration.seconds(5))
+                        .show();
+                LoadAllEmployee();
+
+            } else {
+                new Alert(Alert.AlertType.WARNING, "Something happened!").show();
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void OnActionBtnupdate(ActionEvent actionEvent) {
+
+
+        String id = txtId.getText();
+        String name = txtName.getText();
+        String address = txtAddress.getText();
+        int contact =Integer.parseInt(txtContact.getText());
+
+        try {
+            boolean isUpdated = employeeBO.updateEmployee(new EmployeeDTO(id,name,address,contact));
+
+            if(isUpdated) {
+
+                Notifications.create()
+                        .title("Ravi motors")
+                        //.graphic(new ImageView(image))
+                        .text("Employee Upadte !")
+                        .darkStyle()
+                        .hideAfter(Duration.seconds(5))
+                        .show();
+
+                LoadAllEmployee();
+
+            } else {
+                new Alert(Alert.AlertType.WARNING, "Something happened!").show();
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+
+    }
+
+
+    public void OnActionBtnEmployeeSearch(ActionEvent actionEvent) {
+    }
+
+    public void OnActionBtnSearch(ActionEvent actionEvent) {
+
+        String id = txtId.getText();
+        try {
+            EmployeeDTO employee = employeeBO.searchEmployee(id);
+            if(employee != null) {
+
+                Notifications.create()
+                        .title("Ravi motors")
+                        //.graphic(new ImageView(image))
+                        .text("Employee Search !")
+                        .darkStyle()
+                        .hideAfter(Duration.seconds(5))
+                        .show();
+
+
+
+                fillData(employee);
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    public void LoadAllEmployee(){
+
+        ObservableList data = FXCollections.observableArrayList();
+        try {
+            PreparedStatement statement = DBConnection.getInstance().getConnection().prepareStatement("SELECT * FROM employee");
+            ResultSet allEmployee=statement.executeQuery();
+
+
+            while (allEmployee.next()){
+                data.add(new Customer(allEmployee.getString(1), allEmployee.getString(2), allEmployee.getString(3), allEmployee.getInt( 4)));
+            }
+
+
+        } catch (SQLException e) {
+            System.out.println("sql error");
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            System.out.println("class not found error");
+            throw new RuntimeException(e);
+        }
+        tblEmpoyee.setItems(data);
+
+    }
+
+
+    private void fillData(EmployeeDTO employee) {
+        txtId.setText(employee.getId());
+        txtName.setText(employee.getName());
+        txtAddress.setText(employee.getAddress());
+        txtContact.setText(String.valueOf(employee.getContact()));
+    }
+
+    public void empIdKeyPress(KeyEvent keyEvent) {
+
+        Pattern pattern =Pattern.compile("(e0)([0-9]{1})([0-9]{0,})");
+        Matcher matcher = pattern.matcher(txtId.getText());
+
+        boolean isMatch =matcher.matches();
+
+
+        if (!isMatch) {
+            txtId.setStyle("-fx-text-box-border: #d63031; -fx-focus-color: #d63031;");
+
+            Alert alert = new Alert(Alert.AlertType.ERROR);// line 1
+        } else {
+            txtId.setStyle("-fx-text-box-border: #00b894; -fx-focus-color:#00b894;");
+        }
+    }
+
+    public void contactKeyPress(KeyEvent keyEvent) {
+
+        Pattern contactPattern = Pattern.compile("^(07)([0-9]{8})$");
+        Matcher matcher = contactPattern.matcher(txtContact.getText());
+
+        boolean isMatch =matcher.matches();
+
+        if (!isMatch) {
+            txtContact.setStyle("-fx-text-box-border: #d63031; -fx-focus-color: #d63031;");
+
+            Alert alert = new Alert(Alert.AlertType.ERROR);// line 1
+        } else {
+            txtContact.setStyle("-fx-text-box-border: #00b894; -fx-focus-color:#00b894;");
+        }
+
+    }
+}

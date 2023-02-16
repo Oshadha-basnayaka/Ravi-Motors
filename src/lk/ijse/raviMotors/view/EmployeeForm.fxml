@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="pane" prefHeight="1080.0" prefWidth="1620.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.raviMotors.controller.EmployeeFormController">
+    <children>
+        <ImageView fitHeight="1080.0" fitWidth="1620.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../assets/customer6666newpane.jpg" />
+            </image>
+        </ImageView>
+        <JFXButton buttonType="RAISED" layoutX="633.0" layoutY="381.0" onAction="#OnActionBtnSave" style="-fx-background-color: #3498db;" text="SAVE" textFill="WHITE">
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+            <font>
+                <Font size="18.0" />
+            </font>
+        </JFXButton>
+        <JFXButton buttonType="RAISED" layoutX="908.0" layoutY="381.0" onAction="#OnActionBtnSearch" style="-fx-background-color: #3498db;" text="SEARCH" textFill="WHITE">
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+            <font>
+                <Font size="18.0" />
+            </font>
+        </JFXButton>
+        <JFXButton buttonType="RAISED" layoutX="814.0" layoutY="381.0" onAction="#OnActionBtndelete" style="-fx-background-color: #e74c3c;" text="DELETE" textFill="WHITE">
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+            <font>
+                <Font size="18.0" />
+            </font>
+        </JFXButton>
+        <JFXButton buttonType="RAISED" layoutX="711.0" layoutY="381.0" onAction="#OnActionBtnupdate" style="-fx-background-color: #009432;" text="UPDATE" textFill="WHITE">
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+            <font>
+                <Font size="18.0" />
+            </font>
+        </JFXButton>
+        <Label layoutX="226.0" layoutY="14.0" prefHeight="42.0" prefWidth="330.0" text="Employee Form" textFill="#5e5c5c">
+            <font>
+                <Font name="System Bold" size="26.0" />
+            </font>
+        </Label>
+        <TextField fx:id="txtId" layoutX="38.0" layoutY="100.0" onKeyPressed="#empIdKeyPress" prefHeight="33.0" prefWidth="310.0" promptText="Employee Id*">
+            <font>
+                <Font size="18.0" />
+            </font></TextField>
+        <TextField fx:id="txtName" layoutX="445.0" layoutY="100.0" prefHeight="33.0" prefWidth="310.0" promptText="Employee Name*">
+            <font>
+                <Font size="18.0" />
+            </font></TextField>
+        <TextField fx:id="txtAddress" layoutX="38.0" layoutY="200.0" prefHeight="33.0" prefWidth="310.0" promptText="Employee Address*">
+            <font>
+                <Font size="18.0" />
+            </font></TextField>
+        <TextField fx:id="txtContact" layoutX="445.0" layoutY="200.0" onKeyPressed="#contactKeyPress" prefHeight="33.0" prefWidth="310.0" promptText="Employee Contact*">
+            <font>
+                <Font size="18.0" />
+            </font></TextField>
+        <Label layoutX="38.0" layoutY="75.0" text="Employee Id*">
+            <font>
+                <Font size="18.0" />
+            </font></Label>
+        <Label layoutX="445.0" layoutY="75.0" text="Employee Name*">
+            <font>
+                <Font size="18.0" />
+            </font></Label>
+        <Label layoutX="38.0" layoutY="175.0" text="Employee Address*">
+            <font>
+                <Font size="18.0" />
+            </font></Label>
+        <Label layoutX="445.0" layoutY="175.0" text="Employee Contact*">
+            <font>
+                <Font size="18.0" />
+            </font></Label>
+        <JFXTabPane layoutX="160.0" layoutY="367.0" />
+        <TableView fx:id="tblEmpoyee" layoutX="63.0" layoutY="522.0" prefHeight="500.0" prefWidth="1500.0">
+            <columns>
+                <TableColumn fx:id="colID" prefWidth="377.0" text="ID" />
+                <TableColumn fx:id="colName" prefWidth="350.0" text="Name" />
+                <TableColumn fx:id="colAddress" minWidth="0.0" prefWidth="378.66668701171875" text="Address" />
+                <TableColumn fx:id="colContact" prefWidth="394.33331298828125" text="Contact" />
+            </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+        </TableView>
+        <JFXTextField labelFloat="true" layoutX="1085.0" layoutY="430.0" promptText="Search" />
+    </children>
+</AnchorPane>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="pane" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.raviMotors.controller.DashBoadAdminformController">
+   <children>
+      <ImageView fitHeight="1080.0" fitWidth="1920.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/123456789.jpg" />
+         </image>
+      </ImageView>
+      <AnchorPane fx:id="dashpane" layoutX="300.0" layoutY="3.0" prefHeight="1080.0" prefWidth="1620.0" />
+      <JFXButton buttonType="RAISED" focusTraversable="false" layoutX="37.0" layoutY="145.0" onAction="#OnActionBtnCustomer" prefHeight="90.0" prefWidth="175.0" styleClass="addBobOk" stylesheets="@../css/style.css" text="Customer">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </JFXButton>
+      <JFXButton focusTraversable="false" layoutX="40.0" layoutY="255.0" onAction="#OnActionBtnEmployee" prefHeight="92.0" prefWidth="175.0" styleClass="addBobOk" stylesheets="@../css/style.css" text="Employee">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </JFXButton>
+      <JFXButton focusTraversable="false" layoutX="38.0" layoutY="369.0" onAction="#OnActionBtnSupplier" prefHeight="90.0" prefWidth="175.0" styleClass="addBobOk" stylesheets="@../css/style.css" text="Supplier">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </JFXButton>
+      <JFXButton focusTraversable="false" layoutX="44.0" layoutY="481.0" onAction="#OnActionBtnOrder" prefHeight="94.0" prefWidth="168.0" styleClass="addBobOk" stylesheets="@../css/style.css" text="Place Order">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </JFXButton>
+      <JFXButton focusTraversable="false" layoutX="43.0" layoutY="595.0" onAction="#OnActionBtnPart" prefHeight="92.0" prefWidth="172.0" styleClass="addBobOk" stylesheets="@../css/style.css" text="Parts">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </JFXButton>
+      <JFXButton focusTraversable="false" layoutX="41.0" layoutY="807.0" onAction="#OnActionBtnFinace" prefHeight="90.0" prefWidth="168.0" styleClass="addBobOk" stylesheets="@../css/style.css" text="Finace">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </JFXButton>
+      <JFXButton focusTraversable="false" layoutX="52.0" layoutY="967.0" onAction="#OnActionBtnLoginOut" prefHeight="77.0" prefWidth="168.0" styleClass="addBobOk" stylesheets="@../css/style.css" text="log out" textFill="#7c1515">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="60.0" fitWidth="110.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/image-removebg-preview.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" focusTraversable="false" layoutX="38.0" layoutY="40.0" onAction="#OnActionBtndashboad" prefHeight="90.0" prefWidth="175.0" styleClass="addBobOk" stylesheets="@../css/style.css" text="Dashboad">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </JFXButton>
+      <JFXButton focusTraversable="false" layoutX="41.0" layoutY="698.0" onAction="#OnActionBtnOrderDetail" prefHeight="92.0" prefWidth="172.0" styleClass="addBobOk" stylesheets="@../css/style.css" text="Order Details">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>
